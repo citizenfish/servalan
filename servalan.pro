@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui widgets
+QT       += core gui widgets location
 
 TARGET = servalan
 TEMPLATE = app
@@ -23,15 +23,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-        main.cpp \
-        mainwindow.cpp
+        main.cpp
 
-HEADERS += \
-        mainwindow.h
+HEADERS +=
 
 FORMS += \
         mainwindow.ui
 
+RESOURCES += qml.qrc \
+    qml.qrc
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
