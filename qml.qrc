@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>gpxRoute.qml</file>
+        <file>gpxMarker.qml</file>
+        <file>mapGroupItem.qml</file>
     </qresource>
 </RCC>
