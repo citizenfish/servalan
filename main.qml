@@ -84,7 +84,6 @@ Window {
         for(var i=0; i < gpxPoints.length; i++){
             if(gpxPoints[i].x !== id.x && gpxPoints[y] !== id.y) {
                 new_gpxPoints.push(gpxPoints[i]);
-
             }
         }
         gpxPoints = new_gpxPoints;
