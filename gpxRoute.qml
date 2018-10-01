@@ -44,6 +44,7 @@ MapItemGroup {
         if(index >= 0) {
              var gpxMarker = Qt.createComponent("qrc:/gpxMarker.qml").createObject();
              gpxMarker.position = parent.toCoordinate(Qt.point(x0,y0));
+             gpxMarker.markerIndex = index;
              parent.addMapItem(gpxMarker);
              gpxRoute1.markers.splice(index + 1, 0, gpxMarker);
              /** We need to recacl indexes of all markers beyond insertion point **/
