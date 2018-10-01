@@ -1,16 +1,59 @@
 
 import QtQuick 2.0
 import QtQuick.Window 2.0
+import QtQuick.Controls 2.3
 import QtLocation 5.9
 import QtPositioning 5.6
 
-Window {
+ApplicationWindow {
+    id: appWindow
     width: 1512
     height: 1512
     visible: true
     property variant gpxPoints: []
     property variant undoHistory: []
     property variant mapMode:{'gpxMode': 'edit', 'gpxRoute' : null, 'gpxNextRouteID' : 0}
+
+    signal open();
+    signal newF();
+    signal save();
+    signal quit();
+
+    Component.onCompleted: {
+        appWindow.newF.connect(newFile);
+        appWindow.open.connect(openFile);
+        appWindow.save.connect(saveFile);
+        appWindow.quit.connect(quitApp);
+    }
+
+    menuBar: MenuBar {
+        Menu {
+            title: qsTr("&File")
+            Action {
+                text: qsTr("&New")
+                onTriggered: appWindow.newF();
+            }
+            Action {
+                text: qsTr("&Open")
+                onTriggered: appWindow.open();
+            }
+            Action {
+                text: qsTr("&Save")
+                onTriggered: appWindow.save();
+            }
+            MenuSeparator{}
+            Action {
+                text: qsTr("&Quit")
+                 onTriggered: appWindow.quit();
+            }
+        }
+        Menu {
+            title: qsTr("&Help")
+            Action { text: qsTr("Help")}
+            Action { text: qsTr("&About")}
+
+        }
+    }
 
     Plugin {
         id: mapPlugin
@@ -19,6 +62,21 @@ Window {
              name:"osm.mapping.custom.host"
             value:"file:///Users/daveb/Desktop/mapping-data/1-50k/tiles/"
          }
+    }
+
+    function newFile() {
+        console.log('NEW GPX');
+    }
+    function openFile() {
+        console.log('OPEN GPX');
+    }
+
+    function saveFile() {
+        console.log('SAVE GPX');
+    }
+
+    function quitApp() {
+        Qt.quit();
     }
 
     Map {
@@ -41,7 +99,7 @@ Window {
 
                     baseMap.renderRoutes.connect(renderRoute);
                     baseMap.removeMarkers.connect(removeMarker)
-                }
+        }
 
 
         MouseArea {
@@ -59,6 +117,7 @@ Window {
         function removeMarker(id, index) {
             mapMode.gpxRoute.remove_marker(id,index);
         }
+
 
     }
 
