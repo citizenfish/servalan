@@ -33,11 +33,11 @@ Window {
         signal removeMarkers(int id, int index);
 
         Component.onCompleted: {
-                    for( var i_type in supportedMapTypes ) {
+                  /*  for( var i_type in supportedMapTypes ) {
                         if( supportedMapTypes[i_type].name.localeCompare( "Custom URL Map" ) === 0 ) {
                             activeMapType = supportedMapTypes[i_type]
                         }
-                    }
+                    }*/
 
                     baseMap.renderRoutes.connect(renderRoute);
                     baseMap.removeMarkers.connect(removeMarker)

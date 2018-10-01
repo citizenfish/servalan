@@ -46,6 +46,7 @@ MapItemGroup {
              gpxMarker.position = parent.toCoordinate(Qt.point(x0,y0));
              parent.addMapItem(gpxMarker);
              gpxRoute1.markers.splice(index + 1, 0, gpxMarker);
+             /** We need to recacl indexes of all markers beyond insertion point **/
              for(var f = index + 1; f < gpxRoute1.markers.length; f++) {
                  gpxRoute1.markers[f].markerIndex++;
              }
