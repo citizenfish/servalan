@@ -59,9 +59,20 @@ ApplicationWindow {
 
     FileDialog {
         id: openDialog
-        onAccepted: {}
+        onAccepted: {
+            readDocument()
+        }
     }
 
+    GPXFileIO {
+        id: io
+    }
+
+    function readDocument() {
+        io.source = openDialog.fileUrl
+        io.read();
+        console.log(io.text);
+    }
 
     Plugin {
         id: mapPlugin
