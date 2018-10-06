@@ -216,6 +216,7 @@ DIST          = qmldir \
 		/usr/local/Cellar/qt/5.10.1/mkspecs/features/qt_config.prf \
 		/usr/local/Cellar/qt/5.10.1/mkspecs/macx-clang/qmake.conf \
 		/usr/local/Cellar/qt/5.10.1/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/usr/local/Cellar/qt/5.10.1/mkspecs/features/exclusive_builds.prf \
 		/usr/local/Cellar/qt/5.10.1/mkspecs/features/mac/sdk.prf \
 		/usr/local/Cellar/qt/5.10.1/mkspecs/features/toolchain.prf \
@@ -422,6 +423,7 @@ Makefile: gpxFileIO.pro /usr/local/Cellar/qt/5.10.1/mkspecs/macx-clang/qmake.con
 		/usr/local/Cellar/qt/5.10.1/mkspecs/features/qt_config.prf \
 		/usr/local/Cellar/qt/5.10.1/mkspecs/macx-clang/qmake.conf \
 		/usr/local/Cellar/qt/5.10.1/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/usr/local/Cellar/qt/5.10.1/mkspecs/features/exclusive_builds.prf \
 		/usr/local/Cellar/qt/5.10.1/mkspecs/features/mac/sdk.prf \
 		/usr/local/Cellar/qt/5.10.1/mkspecs/features/toolchain.prf \
@@ -612,6 +614,7 @@ Makefile: gpxFileIO.pro /usr/local/Cellar/qt/5.10.1/mkspecs/macx-clang/qmake.con
 /usr/local/Cellar/qt/5.10.1/mkspecs/features/qt_config.prf:
 /usr/local/Cellar/qt/5.10.1/mkspecs/macx-clang/qmake.conf:
 /usr/local/Cellar/qt/5.10.1/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /usr/local/Cellar/qt/5.10.1/mkspecs/features/exclusive_builds.prf:
 /usr/local/Cellar/qt/5.10.1/mkspecs/features/mac/sdk.prf:
 /usr/local/Cellar/qt/5.10.1/mkspecs/features/toolchain.prf:
@@ -669,6 +672,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) $(TARGET) 
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -746,22 +750,22 @@ moc_gpxfileio.o: moc_gpxfileio.cpp
 ####### Install
 
 install_target: first FORCE
-	@test -d $(INSTALL_ROOT)/usr/local/Cellar/qt/5.10.1/qml/com/citizenfish/qmlcomponents || mkdir -p $(INSTALL_ROOT)/usr/local/Cellar/qt/5.10.1/qml/com/citizenfish/qmlcomponents
-	-$(QINSTALL_PROGRAM) $(TARGET) $(INSTALL_ROOT)/usr/local/Cellar/qt/5.10.1/qml/com/citizenfish/qmlcomponents/$(TARGET)
-	-$(STRIP) -S -x $(INSTALL_ROOT)/usr/local/Cellar/qt/5.10.1/qml/com/citizenfish/qmlcomponents/$(TARGET)
+	@test -d $(INSTALL_ROOT)/Users/daveb/Qt5/5.11.1/clang_64/qml/com/citizenfish/qmlcomponents/ || mkdir -p $(INSTALL_ROOT)/Users/daveb/Qt5/5.11.1/clang_64/qml/com/citizenfish/qmlcomponents/
+	-$(QINSTALL_PROGRAM) $(TARGET) $(INSTALL_ROOT)/Users/daveb/Qt5/5.11.1/clang_64/qml/com/citizenfish/qmlcomponents/$(TARGET)
+	-$(STRIP) -S -x $(INSTALL_ROOT)/Users/daveb/Qt5/5.11.1/clang_64/qml/com/citizenfish/qmlcomponents/$(TARGET)
 
 uninstall_target: FORCE
-	-$(DEL_FILE) $(INSTALL_ROOT)/usr/local/Cellar/qt/5.10.1/qml/com/citizenfish/qmlcomponents/$(TARGET)
-	-$(DEL_DIR) $(INSTALL_ROOT)/usr/local/Cellar/qt/5.10.1/qml/com/citizenfish/qmlcomponents/ 
+	-$(DEL_FILE) $(INSTALL_ROOT)/Users/daveb/Qt5/5.11.1/clang_64/qml/com/citizenfish/qmlcomponents/$(TARGET)
+	-$(DEL_DIR) $(INSTALL_ROOT)/Users/daveb/Qt5/5.11.1/clang_64/qml/com/citizenfish/qmlcomponents/ 
 
 
 install_qmldir: first FORCE
-	@test -d $(INSTALL_ROOT)/usr/local/Cellar/qt/5.10.1/qml/com/citizenfish/qmlcomponents || mkdir -p $(INSTALL_ROOT)/usr/local/Cellar/qt/5.10.1/qml/com/citizenfish/qmlcomponents
-	-$(QINSTALL) /Users/daveb/dev/servalan/plugins/gpxFileIO/gpxFileIO/qmldir $(INSTALL_ROOT)/usr/local/Cellar/qt/5.10.1/qml/com/citizenfish/qmlcomponents/qmldir
+	@test -d $(INSTALL_ROOT)/Users/daveb/Qt5/5.11.1/clang_64/qml/com/citizenfish/qmlcomponents/ || mkdir -p $(INSTALL_ROOT)/Users/daveb/Qt5/5.11.1/clang_64/qml/com/citizenfish/qmlcomponents/
+	-$(QINSTALL) /Users/daveb/dev/servalan/plugins/gpxFileIO/gpxFileIO/qmldir $(INSTALL_ROOT)/Users/daveb/Qt5/5.11.1/clang_64/qml/com/citizenfish/qmlcomponents/qmldir
 
 uninstall_qmldir: FORCE
-	-$(DEL_FILE) -r $(INSTALL_ROOT)/usr/local/Cellar/qt/5.10.1/qml/com/citizenfish/qmlcomponents/qmldir
-	-$(DEL_DIR) $(INSTALL_ROOT)/usr/local/Cellar/qt/5.10.1/qml/com/citizenfish/qmlcomponents/ 
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/Users/daveb/Qt5/5.11.1/clang_64/qml/com/citizenfish/qmlcomponents/qmldir
+	-$(DEL_DIR) $(INSTALL_ROOT)/Users/daveb/Qt5/5.11.1/clang_64/qml/com/citizenfish/qmlcomponents/ 
 
 
 install: install_target install_qmldir  FORCE

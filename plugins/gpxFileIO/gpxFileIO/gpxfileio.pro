@@ -26,8 +26,11 @@ DISTFILES = qmldir
 }
 
 qmldir.files = qmldir
-unix {
-    installPath = $$[QT_INSTALL_QML]/$$replace(uri, \\., /)
+
+
+#Massive hack to get plugin where it can be found I need to understand this better
+osx {
+    installPath = '/Users/daveb/Qt5/5.11.1/clang_64/qml/com/citizenfish/qmlcomponents/'
     qmldir.path = $$installPath
     target.path = $$installPath
     INSTALLS += target qmldir

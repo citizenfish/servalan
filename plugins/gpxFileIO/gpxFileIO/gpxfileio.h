@@ -16,6 +16,17 @@ public:
     ~GPXFileIO();
     Q_INVOKABLE void read();
     Q_INVOKABLE void write();
+    QUrl source() const;
+       QString text() const;
+   public slots:
+       void setSource(QUrl source);
+       void setText(QString text);
+   signals:
+       void sourceChanged(QUrl arg);
+       void textChanged(QString arg);
+   private:
+       QUrl m_source;
+       QString m_text;
 };
 
 #endif // GPXFILEIO_H

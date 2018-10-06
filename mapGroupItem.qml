@@ -2,8 +2,10 @@
 import QtQuick 2.0
 import QtQuick.Window 2.0
 import QtQuick.Controls 2.3
+import QtQuick.Dialogs 1.2
 import QtLocation 5.9
 import QtPositioning 5.6
+import com.citizenfish.qmlcomponents 1.0
 
 ApplicationWindow {
     id: appWindow
@@ -35,7 +37,7 @@ ApplicationWindow {
             }
             Action {
                 text: qsTr("&Open")
-                onTriggered: appWindow.open();
+                onTriggered: openDialog.open();
             }
             Action {
                 text: qsTr("&Save")
@@ -55,6 +57,12 @@ ApplicationWindow {
         }
     }
 
+    FileDialog {
+        id: openDialog
+        onAccepted: {}
+    }
+
+
     Plugin {
         id: mapPlugin
         name: "osm"
@@ -63,6 +71,7 @@ ApplicationWindow {
             value:"file:///Users/daveb/Desktop/mapping-data/1-50k/tiles/"
          }
     }
+
 
     function newFile() {
         console.log('NEW GPX');
